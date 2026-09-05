@@ -62,7 +62,7 @@ $$\mathbf{C}_X = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T}{n - 1}$$
 - **SVD Decomposition**:
   $$\mathbf{C}_X = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T$$
 - **Projection**: The data points are mapped onto the first $k = 2$ principal eigenvectors $\mathbf{U}_k$:
-  $$\mathbf{Z}_PCA = \mathbf{U}_k^T \mathbf{	\tilde{X}}$$
+  $$\mathbf{Z}_{\text{PCA}} = \mathbf{U}_k^T \mathbf{	\tilde{X}}$$
 
 ### Classical Multidimensional Scaling (MDS)
 - **Distance Matrix ($\mathbf{D}^{2}$)**: Pairwise squared Euclidean distances are computed between all observations:
@@ -70,14 +70,14 @@ $$\mathbf{C}_X = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T}{n - 1}$$
 - **Double Centering**: Using centering matrix $\mathbf{H} = \mathbf{I} - rac{1}{n} \mathbf{1}\mathbf{1}^T$:
   $$\mathbf{B} = -\frac{1}{2} \mathbf{H} \mathbf{D}^{2} \mathbf{H}^T$$
 - **Coordinate Recovery**:
-  $$\mathbf{B} = \mathbf{W} \Lambda \mathbf{W}^T \implies \mathbf{Z}_{MDS} =  \Lambda_k^{1/2} \mathbf{W}_k^T$$
+  $$\mathbf{B} = \mathbf{W} \Lambda \mathbf{W}^T \implies \mathbf{Z}_{\text{MDS}} =  \Lambda_k^{1/2} \mathbf{W}_k^T$$
 
 ### Equivalence & Error Metrics
 Both representations preserve identical relative configurations up to orthogonal rotations/reflections. The code computes:
-- Relative PCA reconstruction error: $\frac{\Vert\mathbf{	\tilde{X}} - \mathbf{U}_k \mathbf{U}_k^T \mathbf{	\tilde{X}}\Vert_F}{\Vert\mathbf{	\tilde{X}}\Vert_F}$
-- Classical MDS Gram reconstruction error: $\frac{\Vert\mathbf{	\tilde{X}}^T \mathbf{	\tilde{X}} - \mathbf{Z}_{MDS}^T \mathbf{Z}_{MDS}\Vert_F}{\Vert\mathbf{	\tilde{X}}^T \mathbf{	\tilde{X}}\Vert_F}$
-- Cross-method divergence: $\Vert\mathbf{Z}_{PCA} - \mathbf{Z}_{MDS}\Vert_F 	o 0$
-
+- Relative PCA reconstruction error:
+  $$\frac{\Vert\mathbf{\tilde{X}} - \mathbf{U}_k \mathbf{U}_k^T \mathbf{\tilde{X}}\Vert_F}{\Vert\mathbf{\tilde{X}}\Vert_F}$$
+- Classical MDS Gram reconstruction error: $\frac{\Vert\mathbf{\tilde{X}}^T \mathbf{\tilde{X}} - \mathbf{Z}_{\text{MDS}}^T \mathbf{Z}_{\text{MDS}}\Vert_F}{\Vert\mathbf{\tilde{X}}^T \mathbf{\tilde{X}}\Vert_F}$
+- Cross-method divergence: $\Vert \mathbf{Z}_{\text{PCA}} - \mathbf{Z}_{\text{MDS}}\Vert_F \approx 0$
 ---
 
 ## 📈 Key Findings & Business Insights
