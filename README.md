@@ -41,7 +41,9 @@ $$\mathbf{X} = \frac{\mathbf{MAX}}{\mathbf{SD}}$$
 where $\mathbf{MAX}$ and $\mathbf{SD}$ represent respectively the maximum observed values and standard deviations across items and $\mathbf{X}$ is a matrix of dimensions $m$ x $n$. 
 
 The matrix is mean-centered prior to covariance decomposition:
+
 $$ Cov(\mathbf{X}) = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}'}{n-1} $$
+
 where $\mathbf{	\tilde{X}} = \mathbf{X} -  \mu \mathbf{1}^T$
 
 ---
