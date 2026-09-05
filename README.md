@@ -75,8 +75,11 @@ $$\mathbf{C}_X = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T}{n - 1}$$
 ### Equivalence & Error Metrics
 Both representations preserve identical relative configurations up to orthogonal rotations/reflections. The code computes:
 - Relative PCA reconstruction error:
+  
   $$\frac{\Vert\mathbf{\tilde{X}} - \mathbf{U}_k \mathbf{U}_k^T \mathbf{\tilde{X}}\Vert_F}{\Vert\mathbf{\tilde{X}}\Vert_F}$$
-- Classical MDS Gram reconstruction error: $\frac{\Vert\mathbf{\tilde{X}}^T \mathbf{\tilde{X}} - \mathbf{Z}_{\text{MDS}}^T \mathbf{Z}_{\text{MDS}}\Vert_F}{\Vert\mathbf{\tilde{X}}^T \mathbf{\tilde{X}}\Vert_F}$
+- Classical MDS Gram reconstruction error:
+  
+  $$\frac{\Vert\mathbf{\tilde{X}}^T \mathbf{\tilde{X}} - \mathbf{Z}_{\text{MDS}}^T \mathbf{Z}_{\text{MDS}}\Vert_F}{\Vert\mathbf{\tilde{X}}^T \mathbf{\tilde{X}}\Vert_F}$$
 - Cross-method divergence: $\Vert \mathbf{Z}_{\text{PCA}} - \mathbf{Z}_{\text{MDS}}\Vert_F \approx 0$
 ---
 
