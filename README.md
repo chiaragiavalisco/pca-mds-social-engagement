@@ -62,7 +62,7 @@ $$\mathbf{C}_X = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T}{n - 1}$$
 - **SVD Decomposition**:
   $$\mathbf{C}_X = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T$$
 - **Projection**: The data points are mapped onto the first $k = 2$ principal eigenvectors $\mathbf{U}_k$:
-  $$\mathbf{Z}_{PCA} = \mathbf{U}_k^T \mathbf{	\tilde{X}}$$
+  $$\mathbf{Z} _{PCA}= \mathbf{U}_k^T \mathbf{	\tilde{X}}$$
 
 ### Classical Multidimensional Scaling (MDS)
 - **Distance Matrix ($\mathbf{D}^{2}$)**: Pairwise squared Euclidean distances are computed between all observations:
