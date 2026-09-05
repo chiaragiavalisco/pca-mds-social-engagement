@@ -40,7 +40,7 @@ Because metrics such as `comments` often span orders of magnitude larger than sp
 
 $$\mathbf{X} = \left(\frac{\mathbf{MAX}}{\mathbf{SD}}\right)^T$$
 
-where $\mathbf{MAX}$ and $\mathbf{SD}$ denote respectively the maximum observed values and standard deviations across items, such that the initial data matrix $\mathbf{X}^T \in \mathbb{R}^{n \times m}$ contains $n$ sellers across $m$ metrics. Transposing yields $\mathbf{X} \in \mathbb{R}^{m \times n}$ ($m$ features and $n$ observations).
+where $\mathbf{MAX}$ and $\mathbf{SD}$ denote respectively the maximum observed values and standard deviations across items and $\mathbf{X} \in \mathbb{R}^{m \times n}$ ($m$ features and $n$ observations).
 
 The matrix is mean-centered across observations prior to covariance decomposition:
 
@@ -50,7 +50,7 @@ $$\mathbf{\tilde{X}} = \mathbf{X} - \boldsymbol{\mu} \mathbf{1}_n^T$$
 
 The sample covariance matrix is then computed as:
 
-$$\operatorname{Cov}(\mathbf{X}) = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T}{n - 1}$$
+$$\mathbf{C}_X = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T}{n - 1}$$
 
 ---
 
@@ -58,24 +58,24 @@ $$\operatorname{Cov}(\mathbf{X}) = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T
 
 ### Principal Component Analysis (PCA)
 - **Centering & Covariance**: The sample covariance matrix is constructed as:
-  $$\mathbf{C}_X = rac{1}{n - 1} \mathbf{	ilde{X}}\mathbf{	ilde{X}}^T$$
+  $$\mathbf{C}_X = rac{1}{n - 1} \mathbf{	\tilde{X}}\mathbf{	\tilde{X}}^T$$
 - **SVD Decomposition**:
   $$\mathbf{C}_X = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T$$
 - **Projection**: The data points are mapped onto the first $k = 2$ principal eigenvectors $\mathbf{U}_k$:
-  $$\mathbf{Z} = \mathbf{U}_k^T \mathbf{	ilde{X}}$$
+  $$\mathbf{Z} = \mathbf{U}_k^T \mathbf{	\tilde{X}}$$
 
 ### Classical Multidimensional Scaling (MDS)
 - **Distance Matrix ($\mathbf{D}^{(2)}$)**: Pairwise squared Euclidean distances are computed between all observations:
   $$d_{ij}^2 = \|\mathbf{x}_i - \mathbf{x}_j\|^2$$
 - **Double Centering**: Using centering matrix $\mathbf{H} = \mathbf{I} - rac{1}{n} \mathbf{1}\mathbf{1}^T$:
-  $$\mathbf{B} = -rac{1}{2} \mathbf{H} \mathbf{D}^{(2)} \mathbf{H}$$
+  $$\mathbf{B} = -\frac{1}{2} \mathbf{H} \mathbf{D}^{(2)} \mathbf{H}^T$$
 - **Coordinate Recovery**:
-  $$\mathbf{B} = \mathbf{W}  oldsymbol{\Lambda} \mathbf{W}^T \implies \mathbf{Z}_{MDS} =  oldsymbol{\Lambda}_k^{1/2} \mathbf{W}_k^T$$
+  $$\mathbf{B} = \mathbf{W}  \oldsymbol{\Lambda} \mathbf{W}^T \implies \mathbf{Z}_{MDS} =  oldsymbol{\Lambda}_k^{1/2} \mathbf{W}_k^T$$
 
 ### Equivalence & Error Metrics
 Both representations preserve identical relative configurations up to orthogonal rotations/reflections. The code computes:
-- Relative PCA reconstruction error: $rac{\|\mathbf{	ilde{X}} - \mathbf{U}_k \mathbf{U}_k^T \mathbf{	ilde{X}}\|_F}{\|\mathbf{	ilde{X}}\|_F}$
-- Classical MDS Gram reconstruction error: $rac{\|\mathbf{	ilde{X}}^T \mathbf{	ilde{X}} - \mathbf{Z}_{MDS}^T \mathbf{Z}_{MDS}\|_F}{\|\mathbf{	ilde{X}}^T \mathbf{	ilde{X}}\|_F}$
+- Relative PCA reconstruction error: $rac{\|\mathbf{	\tilde{X}} - \mathbf{U}_k \mathbf{U}_k^T \mathbf{	\tilde{X}}\|_F}{\|\mathbf{	\tilde{X}}\|_F}$
+- Classical MDS Gram reconstruction error: $rac{\|\mathbf{	\tilde{X}}^T \mathbf{	\tilde{X}} - \mathbf{Z}_{MDS}^T \mathbf{Z}_{MDS}\|_F}{\|\mathbf{	\tilde{X}}^T \mathbf{	\tilde{X}}\|_F}$
 - Cross-method divergence: $\|\mathbf{Z}_{PCA} - \mathbf{Z}_{MDS}\|_F 	o 0$
 
 ---
