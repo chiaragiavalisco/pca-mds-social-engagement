@@ -93,22 +93,6 @@ Both representations preserve identical relative configurations up to orthogonal
 
 ---
 
-## 📂 Repository Structure
-
-```text
-├── SecondAssignment.m      # Main MATLAB script (PCA, MDS, Scree plot, Loadings, Scatter)
-├── README.md               # Project documentation and summary
-├── data/
-│   └── thai_retail_fb.mat  # (Optional) Pre-formatted workspace data
-└── figures/                # Output plots
-    ├── pca_2d_scatter.png  # 2D projection on PC1 vs PC2
-    ├── mds_2d_scatter.png  # 2D projection on MD1 vs MD2
-    ├── load_plot.png       # Feature loadings for engagement metrics
-    └── scree_plot.png      # Eigenvalue scree plot and explained variance
-```
-
----
-
 ## 🚀 Getting Started & Usage
 
 ### Prerequisites
@@ -116,14 +100,14 @@ Both representations preserve identical relative configurations up to orthogonal
 - Statistics and Machine Learning Toolbox (optional, the script implements PCA/MDS natively via `svd`).
 
 ### Running the Script
-1. Clone the repository:
+1. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
-   cd <repo-name>
-   ```
-2. Open MATLAB and run `SecondAssignment.m`:
+   git clone [https://github.com/chiaragiavalisco/pca-mds-social-engagement.git](https://github.com/chiaragiavalisco/pca-mds-social-engagement.git)
+   cd pca-mds-social-engagement
+
+2. Open MATLAB, navigate to the cloned folder, and run:
    ```matlab
-   run('SecondAssignment.m')
+   run('pca_mds_social_engagement.m')
    ```
 3. The script will output:
    - Numerical projection matrices `z` (PCA) and `z1` (MDS)
@@ -133,14 +117,13 @@ Both representations preserve identical relative configurations up to orthogonal
 
 ---
 
-## 📄 References & Citation
+## 👤 Author
 
-If you use this work or codebase for academic purposes, please cite:
+**Chiara Giavalisco**  
+* Master's Degree Coursework: *Numerical Methods for Data Mining*  
+* [LinkedIn Profile](https://www.linkedin.com/in/chiara-giavalisco-28b1b9268/) • [GitHub Profile](https://github.com/chiaragiavalisco) • [Email](mailto:chiara.giavalisco@gmail.com)
 
-```bibtex
-@article{thai_retail_pca_mds,
-  title={Dimensionality Reduction and Retail Social Management Analysis: A Comparative Study of PCA and MDS on Facebook Engagement},
-  author={Your Name},
-  year={2024}
-}
-```
+---
+
+## 📄 License
+This project is open-source and available under the [MIT License](LICENSE).
