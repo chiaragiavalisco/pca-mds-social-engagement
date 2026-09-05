@@ -36,15 +36,21 @@ The analyzed dataset records social engagement metrics across 9 Thai fashion & c
 | `angrys` | Sentimental | Negative / controversy reactions |
 
 ### Normalization & Scaling
-Because metrics such as `comments` often span orders of magnitude larger than specific emotions (e.g. `angrys`), features are standardized by their maximum-to-dispersion ratios:
-$$\mathbf{X} = \frac{\mathbf{MAX}}{\mathbf{SD}}$$
-where $\mathbf{MAX}$ and $\mathbf{SD}$ represent respectively the maximum observed values and standard deviations across items and $\mathbf{X}$ is a matrix of dimensions $m$ x $n$. 
+Because metrics such as `comments` often span orders of magnitude larger than specific emotions (e.g., `angrys`), features are standardized by their maximum-to-dispersion ratios:
 
-The matrix is mean-centered prior to covariance decomposition:
+$$\mathbf{X} = \left(\frac{\mathbf{MAX}}{\mathbf{SD}}\right)^T$$
 
-$$ Cov(\mathbf{X}) = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}'}{n-1} $$
+where $\mathbf{MAX}$ and $\mathbf{SD}$ denote respectively the maximum observed values and standard deviations across items, such that the initial data matrix $\mathbf{X}^T \in \mathbb{R}^{n \times m}$ contains $n$ sellers across $m$ metrics. Transposing yields $\mathbf{X} \in \mathbb{R}^{m \times n}$ ($m$ features and $n$ observations).
 
-where $\mathbf{	\tilde{X}} = \mathbf{X} -  \mu \mathbf{1}^T$
+The matrix is mean-centered across observations prior to covariance decomposition:
+
+$$\boldsymbol{\mu} = \frac{\mathbf{X} \mathbf{1}_n}{n}$$
+
+$$\mathbf{\tilde{X}} = \mathbf{X} - \boldsymbol{\mu} \mathbf{1}_n^T$$
+
+The sample covariance matrix is then computed as:
+
+$$\operatorname{Cov}(\mathbf{X}) = \frac{\mathbf{\tilde{X}} \mathbf{\tilde{X}}^T}{n - 1}$$
 
 ---
 
