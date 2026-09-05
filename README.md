@@ -9,21 +9,6 @@ The study investigates engagement data collected from the official Facebook page
 
 ---
 
-## 📌 Table of Contents
-- [Overview & Research Aim](#overview--research-aim)
-- [Dataset & Feature Engineering](#dataset--feature-engineering)
-- [Methodology](#methodology)
-  - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
-  - [Classical Multidimensional Scaling (MDS)](#classical-multidimensional-scaling-mds)
-  - [Equivalence & Reconstruction Error](#equivalence--reconstruction-error)
-- [Key Findings & Business Insights](#key-findings--business-insights)
-- [Repository Structure](#repository-structure)
-- [Getting Started & Usage](#getting-started--usage)
-- [Results & Visualizations](#results--visualizations)
-- [References & Citation](#references--citation)
-
----
-
 ## 🔬 Overview & Research Aim
 
 In social media marketing, user engagement is multidimensional, encompassing both broad visibility (shares, likes) and granular sentimental feedback (comments, specific emoji reactions). Evaluating brand performance across these heterogeneous dimensions is challenging due to scale disparities and collinearity.
@@ -41,20 +26,21 @@ The analyzed dataset records social engagement metrics across 9 Thai fashion & c
 
 | Metric | Type | Description |
 | :--- | :--- | :--- |
-| `num_comments` | Engagement | Volume of user comments generated per post |
-| `num_shares` | Virality | Number of times posts were shared |
-| `num_likes` | Positive baseline | Standard thumbs-up reactions |
-| `num_loves` | Sentimental | High-affinity positive emoji reactions |
-| `num_wows` | Sentimental | Surprise / curiosity reactions |
-| `num_hahas` | Sentimental | Humorous reactions |
-| `num_sads` | Sentimental | Negative / sympathy reactions |
-| `num_angrys` | Sentimental | Negative / controversy reactions |
+| `comments` | Engagement | Volume of user comments generated per post |
+| `shares` | Virality | Number of times posts were shared |
+| `likes` | Positive baseline | Standard thumbs-up reactions |
+| `loves` | Sentimental | High-affinity positive emoji reactions |
+| `wows` | Sentimental | Surprise / curiosity reactions |
+| `hahas` | Sentimental | Humorous reactions |
+| `sads` | Sentimental | Negative / sympathy reactions |
+| `angrys` | Sentimental | Negative / controversy reactions |
 
 ### Normalization & Scaling
-Because metrics such as `num_likes` often span orders of magnitude larger than specific emotions (e.g. `num_angrys`), features are standardized by their maximum-to-dispersion ratios:
-$$\mathbf{X} = rac{\mathbf{MAX}}{\mathbf{SD}}$$
-where $\mathbf{MAX}$ and $\mathbf{SD}$ represent respectively the maximum observed values and standard deviations across items. The matrix is mean-centered prior to covariance decomposition:
-$$\mathbf{	ilde{X}} = \mathbf{X} -  oldsymbol{\mu} \mathbf{1}^T$$
+Because metrics such as `comments` often span orders of magnitude larger than specific emotions (e.g. `angrys`), features are standardized by their maximum-to-dispersion ratios:
+$$\mathbf{X} = \frac{\mathbf{MAX}}{\mathbf{SD}}$$
+where $\mathbf{MAX}$ and $\mathbf{SD}$ represent respectively the maximum observed values and standard deviations across items and $\mathbf{X}$ is a matrix of dimensions $m$ x $n$. The matrix is mean-centered prior to covariance decomposition:
+$$ Cov(\mathbf{X}) = \frac {\tilde{\mathbf{X}} \tilde{\mathbf{X}}'}{n-1} $$
+where $\mathbf{	\tilde{X}} = \mathbf{X} -  oldsymbol{\mu} \mathbf{1}^T$$
 
 ---
 
