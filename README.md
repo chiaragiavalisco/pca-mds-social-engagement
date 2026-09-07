@@ -125,5 +125,14 @@ Both representations preserve identical relative configurations up to orthogonal
 
 ---
 
+## 📚 References
+* **Dehouche, N.** (2020). *Dataset on usage and engagement patterns for Facebook Live sellers in Thailand*. **Data in Brief**, 30, 105661.
+* **Jolliffe, I. T.** (2002). *Principal component analysis for special types of data*. Springer.
+* **Borg, I., & Groenen, P. J.** (2005). *Modern multidimensional scaling: Theory and applications*. Springer Science & Business Media.
+* **Shlens, J.** (2014). *A tutorial on principal component analysis*. arXiv preprint arXiv:1404.1100.
+* **Malhotra, A., Malhotra, C. K., & See, A.** (2013). *How to create brand engagement on Facebook*. **MIT Sloan Management Review**, 54(2), 18–20.
+
+---
+
 ## 📄 License
 This project is open-source and available under the [MIT License](LICENSE).
